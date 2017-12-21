@@ -1,0 +1,12 @@
+## Créer une entité (classe)
+php bin/console make:entity nomClasse
+
+## Creation de la base de données
+php bin/console doctrine:database:create nomBdd
+
+## Update de la bdd avec les nouveaux attributs de la classe
+php bin/console doctrine:migrations:diff
+php bin/console doctrine:migrations:migrate
+
+## Créer un controller
+php bin/console make:controller ProductController

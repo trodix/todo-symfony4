@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>date échéance</th>
+            <th>fait</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for todo in todos %}
+            <tr id="{{todo.id}}">
+                <td>{{todo.id}}</td>
+                <td>{{todo.dateEcheance|date('F j, Y, g:i a')}}</td>
+                <td><input type="checkbox" {{ not todo.fait ? '' : 'checked' }}></td>
+                <td>
+                    <a href="/todo/details/{{todo.id}}" class="btn btn-success">Voir</a>
+                    <a href="/todo/edit/{{todo.id}}" class="btn btn-warning">Modifier</a>
+                    <a href="/todo/delete/{{todo.id}}" class="btn btn-danger">Supprimer</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
