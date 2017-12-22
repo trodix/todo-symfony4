@@ -4,6 +4,10 @@
         <meta charset="UTF-8">
         <title>{% block title %}Todolist{% endblock %}</title>
          <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+         <link rel="stylesheet" type="text/css" href="hhttps://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+         <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js">
+         <link rel="stylesheet" href="{{ asset('css/bootstrap-datetimepicker.css') }}" />
+         <link rel="stylesheet" href="{{ asset('css/datetimepicker.css') }}" />
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
@@ -25,6 +29,8 @@
         </nav>
         <div class="container">
             {% block body %}{% endblock %}
+            <script src="{{ asset('js/jquery-3.2.1.js') }}"></script>
+            <script src="{{ asset('js/bootstrap-datetimepicker.js') }}"></script>
             {% block javascripts %}{% endblock %}
         </div>
     </body>

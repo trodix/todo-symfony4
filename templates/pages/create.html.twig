@@ -2,5 +2,31 @@
 
 {% block body %}
     <h1>Créer une nouvelle tâche</h1>
-    {{ form(form) }}
+    <div class="col-xs-12 col-md-5 col-lg-5">
+        {{ form_start(form) }}
+        <div class="form-group">
+            {{ form_row(form.description, {'attr' : {'class' : 'form-control'}}) }}
+        </div>
+        {% set class = '' %}
+            {% if not form.dateEcheance.vars.valid %}
+                {% set class = 'has-error' %}
+            {% endif %}
+        <div class="form-group {{ class }}">
+            {{ form_label(form.dateEcheance, "Date de la tâche", {'label_attr': {'class': 'control-label'}}) }}
+            {{ form_widget(form.dateEcheance) }}
+            {{ form_errors(form.dateEcheance) }}
+        </div>
+        <button type="submit" class="btn btn-success">Créer</button>
+        {{ form_end(form) }}
+    </div>
 {%  endblock %}
+{% block javascripts %}
+<script type="text/javascript">
+    $(".form_datetime").datetimepicker({
+        format: "dd/mm/yyyy - hh:ii",
+        autoclose: true,
+        todayBtn: true,
+        pickerPosition: "bottom-right"
+    });
+</script>            
+{% endblock %}

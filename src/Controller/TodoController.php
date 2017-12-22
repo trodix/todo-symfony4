@@ -8,7 +8,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 use App\Entity\Todo;
 
@@ -34,8 +33,15 @@ class TodoController extends Controller{
         $todo = new Todo();
         $form = $this->createFormBuilder($todo)
             ->add('description', TextType::class)
-            ->add('dateEcheance', DateTimeType::class)
-            ->add('Créer', SubmitType::class)
+            ->add('dateEcheance', DateTimeType::class, [
+                'widget' => 'single_text',
+                'format' => 'dd/mm/yyyy - hh:ii',
+                'attr' => [
+                    'class' => 'form-control input-inline form_datetime',
+                    'data-provide' => 'form_datetime',
+                    'data-date-format' => 'dd/mm/yyyy - hh:ii'
+                ]
+            ])
             ->getForm();
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
